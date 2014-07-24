@@ -1,5 +1,7 @@
 package com.cl.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.cl.dao.CommonDao;
@@ -14,6 +16,8 @@ import com.cl.request.RegistrationRequest;
 
 @Service
 public class CommonService {
+	
+	  protected Logger log = LoggerFactory.getLogger(this.getClass());
 	  
 	  @Autowired
 	  private SearchDao searchDao;
@@ -33,7 +37,8 @@ public class CommonService {
 		  ActivitiesDTO dto = new ActivitiesDTO();		  
 		  dto.activities = searchDao.searchActivities(request.searchTerm, request.index);		  
 		  dto.num = searchDao.getSearchActivitiesCount(request.searchTerm);
-		  dto.pageNum = (int)(dto.num  + 10 - 1)/10;
+		  dto.pageNum = (int)(dto.num  + 10 - 1)/10;	
+		  log.error("test");
 		  return dto;
 	  }
 	  
