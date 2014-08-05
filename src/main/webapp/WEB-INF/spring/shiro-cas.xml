@@ -23,6 +23,7 @@
         		/example/auth = casFilter
         		/example = roles[normal]    
 				/example/** = roles[normal]
+				/api/** = roles[normal]
 				/** = anon
         	</value>
     	</property>
@@ -37,6 +38,11 @@
 		<property name="casServerUrlPrefix" value="http://localhost:8088/cas"/>
 		<property name="casService" value="http://localhost:8080/example/auth"/>
 	</bean>
+	
+	<!--bean id="casRealm" class="com.cl.shiro.MyRealm">	
+		<property name="casServerUrlPrefix" value="http://localhost:8088/cas"/>
+		<property name="casService" value="http://localhost:8080/example/auth"/>
+	</bean-->
 	
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">  	
     	<property name="realm" ref="casRealm"/>
