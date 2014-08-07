@@ -1,11 +1,14 @@
 package com.cl.web;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.cl.dto.ActivitiesDTO;
 import com.cl.dto.RegistrationDTO;
 import com.cl.dto.RegistrationDetailDTO;
@@ -23,6 +26,8 @@ public class ApiController {
 	 @RequestMapping(value = "/api/search_activities", method = RequestMethod.POST)
 	 @ResponseBody
 	 public ActivitiesDTO searchActivities(@RequestBody ActivitiesRequest request) {
+		  Subject currentUser = SecurityUtils.getSubject();
+		  System.out.println(currentUser.hasRole("normal"));
 		  return commonService.searchActivities(request);
 	 }
 	 
