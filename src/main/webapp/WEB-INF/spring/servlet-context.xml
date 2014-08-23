@@ -43,5 +43,14 @@
     	<property name="prefix" value="/WEB-INF/jsp/"/>
     	<property name="suffix" value=".jsp"/>
   	</bean>
+  	
+  	<bean id="serviceClient" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+  		<property name="serviceUrl">
+  			<value>http://localhost:8080/dagl/hessianCommentService</value>  
+        </property>  
+        <property name="serviceInterface">
+        	<value>com.cl.rmi.BasicAPI</value>  
+        </property>  
+    </bean>
 
 </beans>
