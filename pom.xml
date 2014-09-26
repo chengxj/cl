@@ -255,6 +255,12 @@
 		    <artifactId>hessian</artifactId>
 		    <version>4.0.38</version>
 		</dependency>
+		
+		<dependency>
+		    <groupId>com.github.snakerflow</groupId>
+    		<artifactId>snaker-core</artifactId>
+    		<version>2.1.1</version>
+		</dependency>
 
 	</dependencies>
 

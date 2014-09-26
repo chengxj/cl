@@ -21,7 +21,7 @@
 		<link rel="stylesheet" href="/assets/css/chosen.css" />
 		<link rel="stylesheet" href="/assets/css/datepicker.css" />
 		<link rel="stylesheet" href="/assets/css/bootstrap-timepicker.css" />
-		<link rel="stylesheet" href="/assets/css/daterangepicker.css" />
+		<link rel="stylesheet" href="/assets/css/daterangepicker.css" />		
 		<link rel="stylesheet" href="/assets/css/colorpicker.css" />
 
 		<!-- fonts -->
