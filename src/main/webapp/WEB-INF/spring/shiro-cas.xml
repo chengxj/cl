@@ -19,11 +19,18 @@
 	        </util:map>
 	    </property> 
     	<property name="filterChainDefinitions">
-        	<value>
+        	<!--value>
         		/example/auth = casFilter
         		/example = roles[normal]    
 				/example/** = roles[normal]
 				/api/** = roles[normal]
+				/** = anon
+        	</value-->
+        	<value>
+        		/example/auth = anon
+        		/example = anon    
+				/example/** = anon
+				/api/** = anon
 				/** = anon
         	</value>
     	</property>
