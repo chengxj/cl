@@ -3,6 +3,7 @@
 <c:set var="ngApp" value="app"/>
 <c:set var="ngController" value="ctrl"/>
 <%@include file="include/header.jspf" %>
+<%=session.getAttribute("orgId") %>
 	<div class="container">
 		<p></p>		
 		<div class="bs-example">

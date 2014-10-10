@@ -38,7 +38,6 @@ public class CommonService {
 		  dto.activities = searchDao.searchActivities(request.searchTerm, request.index);		  
 		  dto.num = searchDao.getSearchActivitiesCount(request.searchTerm);
 		  dto.pageNum = (int)(dto.num  + 10 - 1)/10;	
-		  log.error("test");
 		  return dto;
 	  }
 	  

@@ -3,6 +3,8 @@ package com.cl.shiro;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -13,6 +15,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.cas.CasAuthenticationException;
 import org.apache.shiro.cas.CasRealm;
 import org.apache.shiro.cas.CasToken;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
 import org.apache.shiro.util.CollectionUtils;
@@ -44,6 +47,7 @@ public class ShiroRealm extends CasRealm {
         }
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         info.addRoles(roles);
+        System.out.println(roles);
         return info;
 	}
 	
@@ -64,9 +68,13 @@ public class ShiroRealm extends CasRealm {
             // get principal, user id and attributes
             AttributePrincipal casPrincipal = casAssertion.getPrincipal();
             String userId = casPrincipal.getName();
+            
+            
             Map<String, Object> attributes = casPrincipal.getAttributes();
             // refresh authentication token (user id + remember me)
-            casToken.setUserId(userId);         
+            casToken.setUserId(userId);    
+            // 设置SESSION
+            setSession(userId);
             String rememberMeAttributeName = getRememberMeAttributeName();
             String rememberMeStringValue = (String)attributes.get(rememberMeAttributeName);
             boolean isRemembered = rememberMeStringValue != null && Boolean.parseBoolean(rememberMeStringValue);
@@ -82,5 +90,16 @@ public class ShiroRealm extends CasRealm {
         }
     }
     
+    /**
+     * set session
+     * @param userId
+     */
+    private void setSession(String userId) {
+        Session session = SecurityUtils.getSubject().getSession();
+        session.setAttribute("orgId","007");// 部门ID
+        session.setAttribute("orgName","软件工程部");// 部门
+        session.setAttribute("userId", userId);// 用户名
+        session.setAttribute("userName","程小进");// 用户名
+    }    
 
 }

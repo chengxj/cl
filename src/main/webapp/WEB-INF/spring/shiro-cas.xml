@@ -19,25 +19,18 @@
 	        </util:map>
 	    </property> 
     	<property name="filterChainDefinitions">
-        	<!--value>
+        	<value>
         		/example/auth = casFilter
         		/example = roles[normal]    
 				/example/** = roles[normal]
 				/api/** = roles[normal]
-				/** = anon
-        	</value-->
-        	<value>
-        		/example/auth = anon
-        		/example = anon    
-				/example/** = anon
-				/api/** = anon
 				/** = anon
         	</value>
     	</property>
 	</bean>
 	
 	<bean id="casFilter" class="org.apache.shiro.cas.CasFilter">
-		<property name="failureUrl" value="/example/error"/>
+		<property name="failureUrl" value="/example/error" />
 	</bean>
 
 	<!--bean id="casFilter" class="com.cl.shiro.ShiroFilter"></bean-->
@@ -53,7 +46,8 @@
 		<property name="casService" value="http://localhost:8080/example/auth"/>
 	</bean>
 	
-	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">  	
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+    	<property name="cacheManager" ref="cacheManager"/>
     	<property name="realm" ref="casRealm"/>
     	<property name="subjectFactory" ref="casSubjectFactory"/>
 	</bean>
@@ -66,4 +60,7 @@
     	<property name="staticMethod" value="org.apache.shiro.SecurityUtils.setSecurityManager"/>
     	<property name="arguments" ref="securityManager"/>
 	</bean>
+	
+	<bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" />
+		 
 </beans>

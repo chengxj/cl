@@ -10,7 +10,7 @@ public class WebController {
 	
 	  @RequestMapping(value = "/example")
 	  public String activities(Model model) {
-		  return "activities";
+		  return "demo";
 	  }
 	  
 	  @RequestMapping(value = "/example/error")
