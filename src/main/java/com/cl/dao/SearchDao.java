@@ -1,13 +1,17 @@
 package com.cl.dao;
 
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.cl.entity.Activities;
 import com.cl.entity.Registration;
+import com.cl.entity.common.User;
 
 @Repository
 @Transactional(value = "transactionManager", noRollbackFor = { NoResultException.class })
@@ -28,6 +32,18 @@ public class SearchDao {
 		 String hql = "from Activities where id = :uuid";
 		 return entityManager.createQuery(hql, Activities.class)
 				 .setParameter("uuid", id)
+				 .getSingleResult();
+	}
+	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public User getUser(String username) {
+		 String hql = "from User where username = :username";
+		 return entityManager.createQuery(hql, User.class)
+				 .setParameter("username", username)
 				 .getSingleResult();
 	}
 	

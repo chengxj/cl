@@ -1,6 +1,6 @@
 package com.cl.request;
 
-import com.cl.entity.SexEnum;
+import com.cl.entity.enumType.SexEnum;
 
 public class RegistrationRequest {
 	

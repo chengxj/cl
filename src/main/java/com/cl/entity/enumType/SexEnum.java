@@ -1,4 +1,4 @@
-package com.cl.entity;
+package com.cl.entity.enumType;
 
 public enum SexEnum {
 	

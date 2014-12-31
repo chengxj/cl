@@ -1,12 +1,15 @@
 package com.cl.entity;
 
 import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.cl.entity.enumType.SexEnum;
 
 @Entity
 @Table(name = "registration")

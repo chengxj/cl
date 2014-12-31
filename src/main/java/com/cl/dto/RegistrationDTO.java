@@ -1,6 +1,6 @@
 package com.cl.dto;
 
-import com.cl.entity.SexEnum;
+import com.cl.entity.enumType.SexEnum;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 

@@ -24,30 +24,36 @@ import org.jasig.cas.client.authentication.AttributePrincipal;
 import org.jasig.cas.client.validation.Assertion;
 import org.jasig.cas.client.validation.TicketValidationException;
 import org.jasig.cas.client.validation.TicketValidator;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.cl.dao.SearchDao;
+import com.cl.entity.common.Role;
+import com.cl.entity.common.User;
 
 public class ShiroRealm extends CasRealm {
+	
+	  @Autowired
+	  private SearchDao searchDao;
 
 	// custom permissions
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		if (principals == null) {
 			throw new AuthorizationException("PrincipalCollection method argument cannot be null.");  
 		}
-		String name = (String) getAvailablePrincipal(principals);  
-        List<String> roles = new ArrayList<String>();
-        // get roles form database
-        User user = new User("cxj", "1");
-        Role role = new Role("normal");
-        user.setRole(role);
-        if (user.getName().equals(name)) {
-            if (user.getRole() != null) { 
-                roles.add(user.getRole().getName());
+		String name = (String) getAvailablePrincipal(principals);
+		List<String> roles = new ArrayList<String>();
+        User user = searchDao.getUser(name);
+        if (user!=null && user.getUsername().equals(name)) {
+            if (user.getRoles() != null && user.getRoles().size()>0) { 
+            	for(Role role : user.getRoles()){
+            		roles.add(role.getRole());
+            	}
             }
         } else {
             throw new AuthorizationException();
-        }
+        }        
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         info.addRoles(roles);
-        System.out.println(roles);
         return info;
 	}
 	
@@ -68,13 +74,14 @@ public class ShiroRealm extends CasRealm {
             // get principal, user id and attributes
             AttributePrincipal casPrincipal = casAssertion.getPrincipal();
             String userId = casPrincipal.getName();
-            
-            
+
             Map<String, Object> attributes = casPrincipal.getAttributes();
             // refresh authentication token (user id + remember me)
             casToken.setUserId(userId);    
+            
             // 设置SESSION
             setSession(userId);
+            
             String rememberMeAttributeName = getRememberMeAttributeName();
             String rememberMeStringValue = (String)attributes.get(rememberMeAttributeName);
             boolean isRemembered = rememberMeStringValue != null && Boolean.parseBoolean(rememberMeStringValue);

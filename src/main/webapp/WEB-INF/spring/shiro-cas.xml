@@ -12,7 +12,7 @@
 	
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
     	<property name="securityManager" ref="securityManager"/>
-    	<property name="loginUrl" value="http://localhost:8088/cas/login?service=http://localhost:8080/example/auth" />
+    	<property name="loginUrl" value="http://localhost:8088/cas/login?service=http://localhost:8080/example/authentication" />
 	    <property name="filters">
 	        <util:map>
 	            <entry key="casFilter" value-ref="casFilter"/>
@@ -20,7 +20,7 @@
 	    </property> 
     	<property name="filterChainDefinitions">
         	<value>
-        		/example/auth = casFilter
+        		/example/authentication = casFilter
         		/example = roles[normal]    
 				/example/** = roles[normal]
 				/api/** = roles[normal]
@@ -38,12 +38,12 @@
 	<!--bean id="casRealm" class="org.apache.shiro.cas.CasRealm">
 		<property name="defaultRoles" value="normal"/>		
 		<property name="casServerUrlPrefix" value="http://localhost:8088/cas"/>
-		<property name="casService" value="http://localhost:8080/example/auth"/>
+		<property name="casService" value="http://localhost:8080/example/authentication"/>
 	</bean-->
 	
 	<bean id="casRealm" class="com.cl.shiro.ShiroRealm">
 		<property name="casServerUrlPrefix" value="http://localhost:8088/cas"/>
-		<property name="casService" value="http://localhost:8080/example/auth"/>
+		<property name="casService" value="http://localhost:8080/example/authentication"/>
 	</bean>
 	
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
