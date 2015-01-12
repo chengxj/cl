@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.cl.entity.common.DBObject;
 import com.cl.entity.enumType.SexEnum;
 
 @Entity

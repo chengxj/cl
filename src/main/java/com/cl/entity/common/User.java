@@ -29,6 +29,13 @@ public class User implements Serializable {
 	inverseJoinColumns = @JoinColumn(name = "role_id", insertable=false, updatable=false))
 	@BatchSize(size = 10)
 	private Set<Role> roles;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinTable(name = "user_team",
+	joinColumns = @JoinColumn(name="user_id", insertable=false, updatable=false),
+	inverseJoinColumns = @JoinColumn(name = "team_id", insertable=false, updatable=false))
+	@BatchSize(size = 10)
+	private Team team;	
 
 	public User() {
 	}
@@ -99,6 +106,20 @@ public class User implements Serializable {
 	 */
 	public void setUserid(String userid) {
 		this.userid = userid;
+	}
+
+	/**
+	 * @return the team
+	 */
+	public Team getTeam() {
+		return team;
+	}
+
+	/**
+	 * @param team the team to set
+	 */
+	public void setTeam(Team team) {
+		this.team = team;
 	}
 
 }

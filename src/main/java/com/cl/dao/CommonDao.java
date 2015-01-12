@@ -3,9 +3,11 @@ package com.cl.dao;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import com.cl.entity.DBObject;
+
+import com.cl.entity.common.DBObject;
 
 @Repository
 @Transactional(value="transactionManager", noRollbackFor={NoResultException.class})

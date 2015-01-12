@@ -28,6 +28,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.cl.dao.SearchDao;
 import com.cl.entity.common.Role;
+import com.cl.entity.common.Team;
 import com.cl.entity.common.User;
 
 public class ShiroRealm extends CasRealm {
@@ -77,7 +78,7 @@ public class ShiroRealm extends CasRealm {
 
             Map<String, Object> attributes = casPrincipal.getAttributes();
             // refresh authentication token (user id + remember me)
-            casToken.setUserId(userId);    
+            casToken.setUserId(userId);   
             
             // 设置SESSION
             setSession(userId);
@@ -103,10 +104,12 @@ public class ShiroRealm extends CasRealm {
      */
     private void setSession(String userId) {
         Session session = SecurityUtils.getSubject().getSession();
-        session.setAttribute("orgId","007");// 部门ID
-        session.setAttribute("orgName","软件工程部");// 部门
-        session.setAttribute("userId", userId);// 用户名
-        session.setAttribute("userName","程小进");// 用户名
+        User user = searchDao.getUser(userId);
+        Team team = user.getTeam();        
+        session.setAttribute("orgId", team.getId());// 部门ID
+        session.setAttribute("orgName", team.getTeam());// 部门
+        session.setAttribute("userId", user.getUserid());// 用户名
+        session.setAttribute("userName", user.getUsername());// 用户名
     }    
 
 }

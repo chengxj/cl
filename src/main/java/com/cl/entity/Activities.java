@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+
+import com.cl.entity.common.DBObject;
 import com.cl.entity.enumType.ActivityTypeEnum;
 
 @Entity
