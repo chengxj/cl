@@ -24,6 +24,8 @@ import org.jasig.cas.client.authentication.AttributePrincipal;
 import org.jasig.cas.client.validation.Assertion;
 import org.jasig.cas.client.validation.TicketValidationException;
 import org.jasig.cas.client.validation.TicketValidator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.cl.dao.SearchDao;
@@ -33,6 +35,8 @@ import com.cl.entity.common.User;
 
 public class ShiroRealm extends CasRealm {
 	
+	  protected Logger log = LoggerFactory.getLogger(this.getClass());
+	
 	  @Autowired
 	  private SearchDao searchDao;
 
@@ -41,10 +45,10 @@ public class ShiroRealm extends CasRealm {
 		if (principals == null) {
 			throw new AuthorizationException("PrincipalCollection method argument cannot be null.");  
 		}
-		String name = (String) getAvailablePrincipal(principals);
+		String userId = (String) getAvailablePrincipal(principals);
 		List<String> roles = new ArrayList<String>();
-        User user = searchDao.getUser(name);
-        if (user!=null && user.getUsername().equals(name)) {
+        User user = searchDao.getUserByUid(userId);
+        if (user!=null && user.getUserid().equals(userId)) {
             if (user.getRoles() != null && user.getRoles().size()>0) { 
             	for(Role role : user.getRoles()){
             		roles.add(role.getRole());
@@ -104,12 +108,13 @@ public class ShiroRealm extends CasRealm {
      */
     private void setSession(String userId) {
         Session session = SecurityUtils.getSubject().getSession();
-        User user = searchDao.getUser(userId);
+        User user = searchDao.getUserByUid(userId);
         Team team = user.getTeam();        
+        session.setAttribute("LoginUser", user);// 部门ID
         session.setAttribute("orgId", team.getId());// 部门ID
         session.setAttribute("orgName", team.getTeam());// 部门
         session.setAttribute("userId", user.getUserid());// 用户名
         session.setAttribute("userName", user.getUsername());// 用户名
-    }    
+    } 
 
 }

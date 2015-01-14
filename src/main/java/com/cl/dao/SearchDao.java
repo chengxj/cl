@@ -40,10 +40,10 @@ public class SearchDao {
 	 * @param id
 	 * @return
 	 */
-	public User getUser(String username) {
-		 String hql = "from User where username = :username";
+	public User getUserByUid(String userid) {
+		 String hql = "from User where userid = :userid";
 		 return entityManager.createQuery(hql, User.class)
-				 .setParameter("username", username)
+				 .setParameter("userid", userid)
 				 .getSingleResult();
 	}
 	
