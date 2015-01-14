@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : test
+Source Server         : localhost
 Source Server Version : 50173
 Source Host           : localhost:3306
 Source Database       : modal
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50173
 File Encoding         : 65001
 
-Date: 2014-12-31 17:29:57
+Date: 2015-01-14 17:59:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -128,6 +128,25 @@ CREATE TABLE `role_permission` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for `team`
+-- ----------------------------
+DROP TABLE IF EXISTS `team`;
+CREATE TABLE `team` (
+  `id` bigint(20) NOT NULL,
+  `team` varchar(100) NOT NULL,
+  `parent_id` bigint(20) NOT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  `available` bit(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of team
+-- ----------------------------
+INSERT INTO `team` VALUES ('1', '软件工程部', '0', null, '');
+INSERT INTO `team` VALUES ('2', '系统集成部', '0', null, '');
+
+-- ----------------------------
 -- Table structure for `user`
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
@@ -145,7 +164,7 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'test', '测试用户', 'c4ca4238a0b923820dcc509a6f75849b', '123', '0');
+INSERT INTO `user` VALUES ('1', 'test', '测试', 'c4ca4238a0b923820dcc509a6f75849b', '123', '0');
 
 -- ----------------------------
 -- Table structure for `user_role`
@@ -162,3 +181,18 @@ CREATE TABLE `user_role` (
 -- ----------------------------
 INSERT INTO `user_role` VALUES ('1', '1');
 INSERT INTO `user_role` VALUES ('1', '2');
+
+-- ----------------------------
+-- Table structure for `user_team`
+-- ----------------------------
+DROP TABLE IF EXISTS `user_team`;
+CREATE TABLE `user_team` (
+  `user_id` bigint(20) NOT NULL,
+  `team_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`user_id`,`team_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user_team
+-- ----------------------------
+INSERT INTO `user_team` VALUES ('1', '1');
