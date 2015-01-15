@@ -43,6 +43,14 @@
 		<script src="../assets/js/html5shiv.min.js"></script>
 		<script src="../assets/js/respond.min.js"></script>
 		<![endif]-->
+		<style>
+		.btn-sm {
+			border-width: 4px;
+			font-size: 13px;
+			padding: 2px 9px;
+			line-height: 1.39;
+		}
+		</style>
 	</head>
 
 	<body class="no-skin">
@@ -441,19 +449,19 @@
 					<ul class="breadcrumb">
 						<li>
 							<i class="ace-icon fa fa-home home-icon"></i>
-							<a href="#">Home</a>
+							<a href="/example">主页</a>
 						</li>
 						<li class="active">档案提醒</li>
 					</ul><!-- /.breadcrumb -->
+					
+					
 
 					<!-- #section:basics/content.searchbox -->
-					<div class="nav-search" id="nav-search">
-						<form class="form-search">
-							<span class="input-icon">
-								<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
-								<i class="ace-icon fa fa-search nav-search-icon"></i>
-							</span>
-						</form>
+					<div class="nav-search" style="top:5px;">
+						<button class="btn btn-sm btn-primary">增&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;加</button>&nbsp;
+						<button class="btn btn-sm btn-primary">修&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;改</button>&nbsp;
+						<button class="btn btn-sm btn-primary">保&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存</button>&nbsp;
+						<button class="btn btn-sm btn-primary">删&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;除</button>
 					</div><!-- /.nav-search -->
 
 					<!-- /section:basics/content.searchbox -->
@@ -564,22 +572,7 @@
 
 						<div class="row">
 							<div class="col-xs-12">
-								<!-- PAGE CONTENT BEGINS -->
-								<div class="alert alert-block alert-success">
-									<button type="button" class="close" data-dismiss="alert">
-										<i class="ace-icon fa fa-times"></i>
-									</button>
-
-									<i class="ace-icon fa fa-check green"></i>
-
-									Welcome to
-									<strong class="green">
-										Ace
-										<small>(v1.3.1)</small>
-									</strong>,
-	the lightweight, feature-rich and easy to use admin template.
-								</div>
-
+								
 								<div class="row">
 									<div class="space-6"></div>
 

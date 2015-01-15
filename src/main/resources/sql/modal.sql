@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50173
 File Encoding         : 65001
 
-Date: 2015-01-14 17:59:30
+Date: 2015-01-15 17:37:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -47,6 +47,26 @@ INSERT INTO `activities` VALUES ('9', '东大高', 'CYCLING', '', '清河', '东
 INSERT INTO `activities` VALUES ('10', '花海', 'MOUNTAIN', '', '安慧桥', '珍珠泉', '黑猫', null, null);
 INSERT INTO `activities` VALUES ('11', '东大高', 'CYCLING', '', '清河', '东方红、大村、高崖口', '萝卜', null, null);
 INSERT INTO `activities` VALUES ('12', '花海', 'MOUNTAIN', '', '安慧桥', '珍珠泉', '黑猫', null, null);
+
+-- ----------------------------
+-- Table structure for `menu`
+-- ----------------------------
+DROP TABLE IF EXISTS `menu`;
+CREATE TABLE `menu` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(150) NOT NULL,
+  `pid` bigint(20) DEFAULT NULL,
+  `description` varchar(150) DEFAULT NULL,
+  `pageurl` varchar(255) DEFAULT NULL,
+  `type` int(10) NOT NULL,
+  `sort` int(10) NOT NULL,
+  `icon` varchar(150) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of menu
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `permission`
@@ -112,6 +132,20 @@ CREATE TABLE `role` (
 -- ----------------------------
 INSERT INTO `role` VALUES ('1', 'normal', '1', '');
 INSERT INTO `role` VALUES ('2', 'add', '2', '');
+
+-- ----------------------------
+-- Table structure for `role_menu`
+-- ----------------------------
+DROP TABLE IF EXISTS `role_menu`;
+CREATE TABLE `role_menu` (
+  `role_id` bigint(20) NOT NULL,
+  `menu_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`role_id`,`menu_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of role_menu
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `role_permission`
