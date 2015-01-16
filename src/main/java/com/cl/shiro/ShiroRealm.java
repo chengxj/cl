@@ -30,7 +30,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.cl.dao.SearchDao;
 import com.cl.entity.common.Role;
-import com.cl.entity.common.Team;
 import com.cl.entity.common.User;
 
 public class ShiroRealm extends CasRealm {
@@ -85,7 +84,9 @@ public class ShiroRealm extends CasRealm {
             casToken.setUserId(userId);   
             
             // 设置SESSION
-            setSession(userId);
+            Session session = SecurityUtils.getSubject().getSession();
+            User user = searchDao.getUserByUid(userId);
+            session.setAttribute("LoginUser", user);// 登录用户信息
             
             String rememberMeAttributeName = getRememberMeAttributeName();
             String rememberMeStringValue = (String)attributes.get(rememberMeAttributeName);
@@ -101,20 +102,5 @@ public class ShiroRealm extends CasRealm {
             throw new CasAuthenticationException("Unable to validate ticket [" + ticket + "]", e);
         }
     }
-    
-    /**
-     * set session
-     * @param userId
-     */
-    private void setSession(String userId) {
-        Session session = SecurityUtils.getSubject().getSession();
-        User user = searchDao.getUserByUid(userId);
-        Team team = user.getTeam();        
-        session.setAttribute("LoginUser", user);// 部门ID
-        session.setAttribute("orgId", team.getId());// 部门ID
-        session.setAttribute("orgName", team.getTeam());// 部门
-        session.setAttribute("userId", user.getUserid());// 用户名
-        session.setAttribute("userName", user.getUsername());// 用户名
-    } 
 
 }

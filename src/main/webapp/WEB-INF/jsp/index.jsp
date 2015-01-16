@@ -848,7 +848,7 @@
 							</li>
 
 							<li class="">
-								<a href="blank.html">
+								<a href="/blank">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Blank Page
 								</a>

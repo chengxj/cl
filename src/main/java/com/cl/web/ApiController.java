@@ -26,8 +26,6 @@ public class ApiController {
 	 @RequestMapping(value = "/api/search_activities", method = RequestMethod.POST)
 	 @ResponseBody
 	 public ActivitiesDTO searchActivities(@RequestBody ActivitiesRequest request) {
-		  Subject currentUser = SecurityUtils.getSubject();
-		  System.out.println(currentUser.hasRole("normal"));
 		  return commonService.searchActivities(request);
 	 }
 	 

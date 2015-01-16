@@ -21,8 +21,7 @@ public class WebController {
 		if (subject.isAuthenticated()) {
 			subject.logout(); // session 会销毁，在SessionListener监听session销毁，清理权限缓存
 		}
-//		return "redirect:http://172.16.2.196:8088/cas/login?service=http://172.16.2.196:8080/example/authentication";
-		return "redirect:/example";
+		return "/logout";
 	}
 
 	@RequestMapping(value = "/example/error")

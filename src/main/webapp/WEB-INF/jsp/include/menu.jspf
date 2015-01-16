@@ -81,7 +81,9 @@
 					<li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
-							<span class="menu-text"> 档案借阅 </span>
+							<span class="menu-text">档案借阅
+							<span class="badge badge-primary">2</span>
+							</span>
 
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
@@ -113,7 +115,9 @@
 										<li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-list"></i>
-							<span class="menu-text"> 出入库 </span>
+							<span class="menu-text">出入库
+							<span class="badge badge-primary">2</span>
+							</span>
 
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
@@ -144,7 +148,10 @@
 					<li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
-							<span class="menu-text"> 统计查询 </span>
+							<span class="menu-text">
+							统计查询
+							<span class="badge badge-primary">3</span>
+							</span>
 
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
@@ -169,6 +176,15 @@
 
 								<b class="arrow"></b>
 							</li>
+							
+							<li class="">
+								<a href="form-wizard.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									档案利用
+								</a>
+
+								<b class="arrow"></b>
+							</li>
 
 						</ul>
 					</li>
@@ -181,7 +197,7 @@
 								系统管理
 
 								<!-- #section:basics/sidebar.layout.badge -->
-								<span class="badge badge-primary">5</span>
+								<span class="badge badge-primary">3</span>
 
 								<!-- /section:basics/sidebar.layout.badge -->
 							</span>

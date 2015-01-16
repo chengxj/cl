@@ -21,7 +21,6 @@
     	<property name="filterChainDefinitions">
         	<value>	
         		/example/authentication = casFilter
-        		/example/logout = logout
         		/example = roles[normal]    
 				/example/** = roles[normal]
 				/api/** = roles[normal]

@@ -2,7 +2,7 @@
 <%@include file="include/global.jspf" %>
 <c:set var="ngApp" value="app"/>
 <c:set var="ngController" value="ctrl"/>
-<%@include file="include/header.jspf" %>
+<%@include file="include/headerAngular.jspf" %>
 	<div class="container">
 		<p></p>
 		<div class="bs-example">
