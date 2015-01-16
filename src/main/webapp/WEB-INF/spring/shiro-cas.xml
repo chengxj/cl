@@ -13,6 +13,7 @@
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
     	<property name="securityManager" ref="securityManager"/>
     	<property name="loginUrl" value="${shiro.loginUrl}" />
+    	<property name="unauthorizedUrl" value="${shiro.logoutUrl}" />
 	    <property name="filters">
 	        <util:map>
 	            <entry key="casFilter" value-ref="casFilter"/>
@@ -20,8 +21,9 @@
 	    </property> 
     	<property name="filterChainDefinitions">
         	<value>	
+				/example/error = anon				
         		/example/authentication = casFilter
-        		/example = roles[normal]    
+        		/example = roles[normal] 
 				/example/** = roles[normal]
 				/api/** = roles[normal]
         	</value>
