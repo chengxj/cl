@@ -63,13 +63,22 @@ public class WebController {
 		return "redirect:/example";
 	}
 
+//	@RequestMapping(value = "/example/logout")
+//	public String logout(Model model) {
+//		Subject subject = SecurityUtils.getSubject();
+//		if (subject.isAuthenticated()) {
+//			subject.logout(); // session 会销毁，在SessionListener监听session销毁，清理权限缓存
+//		}
+//		return "redirect:/example";
+//	}
+	
 	@RequestMapping(value = "/example/logout")
 	public String logout(Model model) {
 		Subject subject = SecurityUtils.getSubject();
 		if (subject.isAuthenticated()) {
 			subject.logout(); // session 会销毁，在SessionListener监听session销毁，清理权限缓存
 		}
-		return "redirect:/example";
+		return "/logout";
 	}
 
 	@RequestMapping(value = "/example/error")

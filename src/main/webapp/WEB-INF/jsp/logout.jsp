@@ -6,7 +6,7 @@
 		<meta charset="utf-8" />
 		<title>注销</title>
 		<script type="text/javascript">
-    		location.href = "http://172.16.2.196:8088/cas/logout?service=http://172.16.2.196:8080/example/authentication";  
+    		location.href = "http://localhost:8088/cas/logout?service=http://localhost:8080/example/authentication";  
 		</script> 
 	</head>
 	<body>
