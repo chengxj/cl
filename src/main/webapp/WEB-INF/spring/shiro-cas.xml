@@ -33,16 +33,8 @@
 	<bean id="casFilter" class="org.apache.shiro.cas.CasFilter">
 		<property name="failureUrl" value="${shiro.failureUrl}" />
 	</bean>
-
-	<!--bean id="casFilter" class="com.cl.shiro.ShiroFilter"></bean-->
 	
-	<!--bean id="casRealm" class="org.apache.shiro.cas.CasRealm">
-		<property name="defaultRoles" value="normal"/>		
-		<property name="casServerUrlPrefix" value="http://localhost:8088/cas"/>
-		<property name="casService" value="http://localhost:8080/example/authentication"/>
-	</bean-->
-	
-	<bean id="casRealm" class="com.cl.shiro.ShiroRealm">
+	<bean id="casRealm" class="com.cl.shiro.ShiroCasRealm">
 		<property name="casServerUrlPrefix" value="${shiro.casServerUrlPrefix}"/>
 		<property name="casService" value="${shiro.casService}"/>
 	</bean>
