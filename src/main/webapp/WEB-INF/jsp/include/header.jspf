@@ -71,7 +71,7 @@
 					<!-- #section:basics/navbar.layout.brand -->
 					<a href="#" class="navbar-brand">
 						<small>
-							<i class="fa fa-leaf"></i>
+							<img src="/resources/img/project_red_24_24.png"></img>
 							项目管理系统
 						</small>
 					</a>
