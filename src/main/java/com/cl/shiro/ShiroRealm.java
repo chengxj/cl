@@ -32,7 +32,7 @@ import com.cl.dao.SearchDao;
 import com.cl.entity.common.Role;
 import com.cl.entity.common.User;
 
-public class ShiroCasRealm extends CasRealm {
+public class ShiroRealm extends CasRealm {
 	
 	  protected Logger log = LoggerFactory.getLogger(this.getClass());
 	
