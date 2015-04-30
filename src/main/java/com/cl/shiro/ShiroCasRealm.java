@@ -3,7 +3,6 @@ package com.cl.shiro;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -27,7 +26,6 @@ import org.jasig.cas.client.validation.TicketValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import com.cl.dao.SearchDao;
 import com.cl.entity.common.Role;
 import com.cl.entity.common.User;

@@ -12,6 +12,8 @@
 		<hibernate.version>3.6.0.Final</hibernate.version>
 		<junit.version>4.11</junit.version>
 		<shiro.version>1.2.3</shiro.version>
+		<pdfbox.version>1.8.8</pdfbox.version>
+		<xstream.version>1.4.8</xstream.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -254,6 +256,18 @@
 		  	<artifactId>shiro-core</artifactId>
 		  	<version>${shiro.version}</version>
 		</dependency>
+		
+		<dependency>
+    		<groupId>org.apache.pdfbox</groupId>
+    		<artifactId>pdfbox</artifactId>
+    		<version>${pdfbox.version}</version>
+		</dependency>
+		
+		<dependency>
+    		<groupId>com.thoughtworks.xstream</groupId>
+    		<artifactId>xstream</artifactId>
+    		<version>${xstream.version}</version>
+		</dependency>
 
 	</dependencies>
 
@@ -265,12 +279,11 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>1.7</source>
+					<target>1.7</target>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>
