@@ -4,11 +4,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.cl.dao.CommonDao;
 import com.cl.dao.SearchDao;
 import com.cl.dto.ActivitiesDTO;
 import com.cl.dto.RegistrationDTO;
 import com.cl.dto.RegistrationDetailDTO;
+import com.cl.dto.ServiceApiDTO;
 import com.cl.entity.Registration;
 import com.cl.request.ActivitiesRequest;
 import com.cl.request.RegistrationDetailRequest;
@@ -27,6 +29,17 @@ public class CommonService {
 	  
 	  @Autowired
 	  private DTOHelper dtoHelper;
+	  
+	  /**
+	   * 
+	   * @param request
+	   * @return
+	   */
+	  public ServiceApiDTO getApis() {
+		  ServiceApiDTO dto = new ServiceApiDTO();		  
+		  dto.apis = searchDao.getApis();
+		  return dto;
+	  }
 	  
 	  /**
 	   * 

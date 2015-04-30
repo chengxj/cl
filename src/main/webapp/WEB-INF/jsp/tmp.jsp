@@ -69,14 +69,10 @@
 					<ul class="breadcrumb">
 						<li>
 							<i class="ace-icon fa fa-home home-icon"></i>
-							<a href="#">Home</a>
-						</li>
-
-						<li>
-							<a href="#">Other Pages</a>
+							<a href="#">主页</a>
 						</li>
 						
-						<li class="active">Blank Page</li>
+						<li class="active">REST API</li>
 						
 					</ul><!-- /.breadcrumb -->
 
@@ -107,9 +103,9 @@
 											TABLE
 										</h3>
 										<br/>
-										<select name="table" style="width:100%">
-											<option value="activities">Activities</option>
-											<option value="registration">Registration</option>
+										<select ng-model="table" style="width:100%" ng-change="tableChang()" ng-init="table=''">
+											<option value="">请选择</option>
+											<option value="{{api.id}}" ng-repeat="api in data.apis">{{api.serviceName}}</option>
 										</select>
 									</div>
 									<div class="col-xs-6 col-sm-10">
@@ -199,19 +195,35 @@
 		<script src="../assets/js/ace-elements.min.js"></script>
 		<script src="../assets/js/ace.min.js"></script>
 		
-		<script>
-		jQuery(function($) {			
-			$( "#tabs" ).tabs();
-		});
+<script>
+jQuery(function($) {			
+	$( "#tabs" ).tabs();
+});
+
+angular.module('app', ['ngResource'])
+.factory('apiDao', function($resource) {
+	return {
+		getApis:function() {
+			return $resource('/api/get_apis.json');
+		},
+		getApiStruction:function() {
+			return $resource('/api/get_api_struction.json');
+		}
+	};
+})
+.controller('ctrl', ['$scope', 'apiDao',
+	function($scope, apiDao) {
+		$scope.tableChang = function() {
+			$scope.apiData = apiDao.getApiStruction().save($scope.table);
+		};
+	
+		$scope.getApis = function(){
+			$scope.data = apiDao.getApis().save();
+		};
 		
-		angular.module('app', ['ngResource'])
-		.controller('ctrl', ['$scope', 
-			function($scope) {
-				
-				
-						
-			}
-		]);
-		</script>
+		$scope.getApis();
+	}
+]);
+</script>
 	</body>
 </html>

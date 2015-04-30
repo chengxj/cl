@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cl.entity.Activities;
 import com.cl.entity.Registration;
+import com.cl.entity.ServiceConfig;
 import com.cl.entity.common.User;
 
 @Repository
@@ -108,6 +109,17 @@ public class SearchDao {
 		} catch (NoResultException e) {
 			return 0;
 		}
+	}
+	
+	/**
+	 * 
+	 * @param request
+	 * @return
+	 */
+	public List<ServiceConfig> getApis() {
+		return entityManager.createQuery("From ServiceConfig", ServiceConfig.class)
+				.setFirstResult(0)
+				.getResultList();
 	}
 
 }
