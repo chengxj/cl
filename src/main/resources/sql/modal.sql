@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50173
 File Encoding         : 65001
 
-Date: 2015-01-15 17:37:31
+Date: 2015-04-30 18:21:15
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -162,6 +162,24 @@ CREATE TABLE `role_permission` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for `service_config`
+-- ----------------------------
+DROP TABLE IF EXISTS `service_config`;
+CREATE TABLE `service_config` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `service_name` varchar(20) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `method` varchar(10) NOT NULL,
+  `class_name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`,`method`,`class_name`,`url`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of service_config
+-- ----------------------------
+INSERT INTO `service_config` VALUES ('1', 'activites', '/api/activities', 'post', 'com.cl.entity.Activities');
+
+-- ----------------------------
 -- Table structure for `team`
 -- ----------------------------
 DROP TABLE IF EXISTS `team`;
@@ -193,12 +211,15 @@ CREATE TABLE `user` (
   `locked` varchar(10) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_user_username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', 'test', '测试', 'c4ca4238a0b923820dcc509a6f75849b', '123', '0');
+INSERT INTO `user` VALUES ('2', 'cxj', '程小进', 'c4ca4238a0b923820dcc509a6f75849b', '123', '0');
+INSERT INTO `user` VALUES ('3', 'admin', '管理员', 'c4ca4238a0b923820dcc509a6f75849b', '123', '0');
+INSERT INTO `user` VALUES ('4', '张丽芳', '张丽芳', 'c4ca4238a0b923820dcc509a6f75849b', '123', '0');
 
 -- ----------------------------
 -- Table structure for `user_role`
@@ -215,6 +236,11 @@ CREATE TABLE `user_role` (
 -- ----------------------------
 INSERT INTO `user_role` VALUES ('1', '1');
 INSERT INTO `user_role` VALUES ('1', '2');
+INSERT INTO `user_role` VALUES ('2', '1');
+INSERT INTO `user_role` VALUES ('2', '2');
+INSERT INTO `user_role` VALUES ('3', '1');
+INSERT INTO `user_role` VALUES ('4', '1');
+INSERT INTO `user_role` VALUES ('4', '2');
 
 -- ----------------------------
 -- Table structure for `user_team`

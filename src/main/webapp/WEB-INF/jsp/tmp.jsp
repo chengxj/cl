@@ -77,12 +77,7 @@
 					</ul><!-- /.breadcrumb -->
 
 					<!-- #section:basics/content.searchbox -->
-					<div class="nav-search" style="top:5px;">
-						<button class="btn btn-custom btn-primary">增&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;加</button>&nbsp;
-						<button class="btn btn-custom btn-primary">修&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;改</button>&nbsp;
-						<button class="btn btn-custom btn-primary">保&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存</button>&nbsp;
-						<button class="btn btn-custom btn-primary">删&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;除</button>
-					</div>
+					<div class="nav-search" style="top:5px;"></div>
 					<!-- /section:basics/content.searchbox -->
 					
 				</div>
@@ -134,7 +129,21 @@
 										</ul>
 
 										<div id="tabs-1" aria-labelledby="ui-id-29" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" aria-hidden="false">
-											<p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Duis orci. Aliquam sodales tortor vitae ipsum. Ut et mauris vel pede varius sollicitudin.</p>
+											<table>
+											<thead>
+											<th>字段</th>
+											<th>录入</th>
+											</thead>
+											<tbody>
+											<tr ng-repeat="classStruction in apiData.classStructions" ng-hide="classStruction.isPrimary">
+											<td style="width:150px;">{{classStruction.fieldName}}</td>
+											<td style="width:500px;"><input type="text" style="width:100%" /></td>
+											</tr>
+											</tbody>
+											</table>
+											
+											<button class="btn btn-info" type="button">提交</button>
+											
 										</div>
 
 										<div id="tabs-2" aria-labelledby="ui-id-30" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" aria-hidden="true" style="display: none;">
@@ -214,7 +223,9 @@ angular.module('app', ['ngResource'])
 .controller('ctrl', ['$scope', 'apiDao',
 	function($scope, apiDao) {
 		$scope.tableChang = function() {
-			$scope.apiData = apiDao.getApiStruction().save($scope.table);
+			if ($scope.table != null && $scope.table != "") {
+				$scope.apiData = apiDao.getApiStruction().save({serviceId:$scope.table});
+			}
 		};
 	
 		$scope.getApis = function(){

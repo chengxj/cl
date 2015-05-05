@@ -121,5 +121,11 @@ public class SearchDao {
 				.setFirstResult(0)
 				.getResultList();
 	}
+	
+	public ServiceConfig getApiById(long uuid) {
+		return entityManager.createQuery("From ServiceConfig where id = :uuid", ServiceConfig.class)
+				.setParameter("uuid", uuid)
+				.getSingleResult();
+	}
 
 }

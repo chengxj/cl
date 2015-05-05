@@ -23,6 +23,7 @@ public class ServiceConfig implements Serializable, DBObject{
 	private String url;
 	private String method;
 	private String className;
+	private String primaryKey;
 
 	public Long getId() {
 		return id;
@@ -96,6 +97,20 @@ public class ServiceConfig implements Serializable, DBObject{
 	 */
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return the primaryKey
+	 */
+	public String getPrimaryKey() {
+		return primaryKey;
+	}
+
+	/**
+	 * @param primaryKey the primaryKey to set
+	 */
+	public void setPrimaryKey(String primaryKey) {
+		this.primaryKey = primaryKey;
 	}
 
 }

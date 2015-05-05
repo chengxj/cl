@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cl.dto.ClassDTO;
 import com.cl.dto.ServiceApiDTO;
 import com.cl.dto.common.BaseDTO;
+import com.cl.request.ServiceApiRequest;
 import com.cl.service.CommonService;
 
 @Controller
@@ -19,10 +21,9 @@ public class TmpController {
 	 
 	 @RequestMapping(value = "/api/get_api_struction", method = RequestMethod.POST)
 	 @ResponseBody
-	 public BaseDTO getApiStruction(@RequestBody String serviceId) {
-		 
-		 return null;
-	 } 
+	 public ClassDTO getApiStruction(@RequestBody ServiceApiRequest ServiceRequest) throws ClassNotFoundException {
+		 return commonService.getApiById(ServiceRequest);
+	 }
 	 
 	 @RequestMapping(value = "/api/get_apis", method = RequestMethod.POST)
 	 @ResponseBody
@@ -32,7 +33,7 @@ public class TmpController {
 	 
 	 @RequestMapping(value = "/api/table", method = RequestMethod.POST)
 	 @ResponseBody
-	 public BaseDTO execApi(@RequestBody String serviceId) {
+	 public BaseDTO execApi(@RequestBody ServiceApiRequest ServiceRequest) {
 		 
 		 
 		 return null;
