@@ -20,7 +20,7 @@ public class WebController {
 
 	@RequestMapping(value = "/example")
 	public String activities(Model model) {
-		return "demo";
+		return "index";
 	}
 	
 	@RequestMapping(value = "/example/login", method = RequestMethod.GET)
