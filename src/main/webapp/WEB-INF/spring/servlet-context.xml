@@ -14,7 +14,6 @@
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
     	<property name="messageConverters">
       		<list>
-      			<!--bean class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter" /--> 
     			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
       		</list> 
     	</property>    
@@ -30,19 +29,15 @@
 	    <property name="mediaTypes">
 	      	<map>
 	        	<entry key="json" value="application/json" />
-	        	<!--entry key="xml" value="application/xml" /-->
-	      	</map>
+	        	<entry key="jsonp" value="application/javascript" />
+            </map>
 	    </property>
 	    <property name="defaultViews">
 	      	<list>
 	      		<!--json-->
 	        	<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" ></bean>
-	        	<!--xml-->
-	        	<!--bean class="org.springframework.web.servlet.view.xml.MarshallingView">  
-                    <property name="marshaller">  
-                		<bean class="org.springframework.oxm.xstream.XStreamMarshaller" />  
-            		</property>
-                </bean-->	        	
+	        	<!--jsonp-->
+	        	<bean class="com.cl.jsonp.MappingJsonpView" ></bean>        	
 	      	</list>
 	    </property>
     	<property name="ignoreAcceptHeader" value="true" />
