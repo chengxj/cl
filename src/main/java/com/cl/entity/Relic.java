@@ -15,6 +15,7 @@ public class Relic implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="OBJ_ID")
 	private long objId;
 
