@@ -1,6 +1,7 @@
 package com.cl.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -10,12 +11,9 @@ import org.springframework.stereotype.Service;
 
 import com.cl.dao.CommonDao;
 import com.cl.dao.SearchDao;
-import com.cl.dto.ClassDTO;
+import com.cl.dto.RelicDTO;
 import com.cl.dto.RelicsDTO;
-import com.cl.dto.ServiceApiDTO;
 import com.cl.entity.Relic;
-import com.cl.entity.ServiceConfig;
-import com.cl.request.ServiceApiRequest;
 
 @Service
 public class CommonService {
@@ -31,30 +29,19 @@ public class CommonService {
 	  @Autowired
 	  private DTOHelper dtoHelper;
 	  
-	  /**
-	   * 
-	   * @param request
-	   * @return
-	   */
-	  public ServiceApiDTO getApis() {
-		  ServiceApiDTO dto = new ServiceApiDTO();		  
-		  dto.apis = searchDao.getApis();
+	  public RelicsDTO getRelics(int page, int start, int limit, String filter) {
+		  RelicsDTO dto = new RelicsDTO();
+		  dto.success = true;
+		  dto.message = "获取数据成功。";
+		  dto.data = searchDao.searchRelics(page, start, limit, filter);
 		  return dto;
 	  }
 	  
-	  public ClassDTO getApiById(ServiceApiRequest request) throws ClassNotFoundException {
-		  ServiceConfig serviceConfig = searchDao.getApiById(request.serviceId);
-		  return dtoHelper.buildClassDTO(serviceConfig);
-	  }
-	  
-	  public RelicsDTO getRelics() {
-		  RelicsDTO dto = new RelicsDTO();
-		  List<Relic> relics = new ArrayList<Relic>();
-		  Relic relic = new Relic();
-		  relic.setObjId(888);
-		  relic.setObjNumber(11);
-		  relics.add(relic);
-		  dto.relics = relics;
+	  public RelicDTO getRelic(long id) {
+		  RelicDTO dto = new RelicDTO();
+		  dto.success = true;
+		  dto.message = "获取数据成功。";
+		  dto.data = searchDao.getRelic(id);
 		  return dto;
 	  }
 	  

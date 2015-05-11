@@ -29,20 +29,20 @@
   </bean>
 
   <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-    <property name="driverClass" value="${jdbc.driver}"/>
-    <property name="jdbcUrl" value="${jdbc.url}"/>
-    <property name="user" value="${jdbc.username}"/>
-    <property name="password" value="${jdbc.password}"/>
-    <property name="maxPoolSize" value="${jdbc.maxPoolSize}"/>
-    <property name="checkoutTimeout" value="${jdbc.checkoutTimeout}"/>
-    <property name="idleConnectionTestPeriod" value="${jdbc.idleConnectionTestPeriod}"/>
-    <property name="preferredTestQuery" value="${jdbc.preferredTestQuery}"/>
-    <property name="minPoolSize" value="${jdbc.minPoolSize}"/>
-    <property name="initialPoolSize" value="${jdbc.initialPoolSize}"/>
-    <property name="acquireIncrement" value="${jdbc.acquireIncrement}"/>
-    <property name="acquireRetryAttempts" value="${jdbc.acquireRetryAttempts}"/>
+    <property name="driverClass">
+    	<value>oracle.jdbc.driver.OracleDriver</value>
+    </property>
+    <property name="jdbcUrl">
+    	<value>jdbc:oracle:thin:@172.16.10.68:1521:ggoa</value>
+    </property>
+    <property name="user" value="ggdpm"/>
+    <property name="password" value="ggdpm"/>
+    <property name="minPoolSize" value="3" />   
+	<property name="maxPoolSize" value="6" />   
+	<property name="maxIdleTime" value="1800" />   
+	<property name="initialPoolSize" value="3" />   
   </bean>
-  
+    
   <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
     <property name="entityManagerFactory" ref="entityManagerFactory" />
   </bean>

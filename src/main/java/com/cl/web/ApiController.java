@@ -6,52 +6,73 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.cl.dto.ClassDTO;
+import com.cl.dto.RelicDTO;
 import com.cl.dto.RelicsDTO;
-import com.cl.dto.ServiceApiDTO;
 import com.cl.entity.Relic;
-import com.cl.request.ServiceApiRequest;
 import com.cl.service.CommonService;
 
 @Controller
 public class ApiController {
 	
 	 @Autowired
-	 private CommonService commonService;	
+	 private CommonService commonService;
 	 
-	 @RequestMapping(value = "/api/get_api_struction", method = RequestMethod.POST)
+	 @RequestMapping(value = "/api/relic", method = RequestMethod.GET)
 	 @ResponseBody
-	 public ClassDTO getApiStruction(@RequestBody ServiceApiRequest ServiceRequest) throws ClassNotFoundException {
-		 return commonService.getApiById(ServiceRequest);
+	 public RelicsDTO getRelics(@RequestParam(value = "page", required = false) int page,
+			 @RequestParam(value = "start", required = false) int start,
+			 @RequestParam(value = "limit", required = false) int limit,
+			 @RequestParam(value = "filter", required = false) String filter) {
+		 return commonService.getRelics(page, start, limit, filter);
 	 }
 	 
-	 @RequestMapping(value = "/api/get_apis", method = RequestMethod.POST)
+	 @RequestMapping(value = "/relic", method = RequestMethod.GET)
 	 @ResponseBody
-	 public ServiceApiDTO getTableApis() {
-		 return commonService.getApis();
-	 }
-	 
-	 @RequestMapping(value = "/api/relic", method = RequestMethod.POST)
-	 @ResponseBody
-	 public RelicsDTO getRelics() {
-		 return commonService.getRelics();
-	 }
-	 
-	 @RequestMapping(value = "/api/relic/{id}", method = RequestMethod.POST)
-	 @ResponseBody
-	 public Relic getRelic(@PathVariable String id) {
-		 Relic relic = new Relic();
-		 relic.setObjId(888);
-		 relic.setObjNumber(11);
-		 return relic;
+	 public RelicDTO getRelic(@RequestParam(value = "id", required = true) long id) {
+		 return commonService.getRelic(id);
 	 }	 
 	 
-	 @RequestMapping(value = "/api/get_relics", method = RequestMethod.POST)
+	 /**
+	  * 创建一条新的文物信息
+	  * @param relic
+	  * @return
+	  */
+	 @RequestMapping(value = "/api/relic", method = RequestMethod.POST)
 	 @ResponseBody
-	 public RelicsDTO searchRelics() {		 
-		 return null;
+	 public RelicDTO createRelic(@RequestBody Relic relic) {
+		 RelicDTO dto = new RelicDTO();
+		 Relic re = new Relic();
+		 dto.data = re;
+		 return dto;
+	 }	
+	 
+	 /**
+	  * 更新文物信息
+	  * @param id
+	  * @return
+	  */
+	 @RequestMapping(value = "/api/relic/{id}", method = RequestMethod.PUT)
+	 @ResponseBody
+	 public RelicDTO updateRelic(@PathVariable String id) {
+		 RelicDTO dto = new RelicDTO();
+		 
+		 return dto;
+	 }
+	 
+	 /**
+	  * 删除文物信息
+	  * @param id
+	  * @return
+	  */
+	 @RequestMapping(value = "/api/relic/{id}", method = RequestMethod.DELETE)
+	 @ResponseBody
+	 public RelicDTO deleteRelic(@PathVariable String id) {
+		 RelicDTO dto = new RelicDTO();
+		 
+		 return dto;
 	 }
 	 
 }

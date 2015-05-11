@@ -19,25 +19,18 @@
     	</property>    
   	</bean>
   	<bean id="exceptionHandler" class="com.cl.web.common.WebHandlerExceptionResolver"/>
-  	
-  	<mvc:resources mapping="/resources/**" location="/resources/" />
-  	<mvc:resources mapping="/assets/**" location="/assets/" />
-  	<mvc:resources mapping="/docs/**" location="/docs/" />
   	  	
   	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
 	    <property name="order" value="0" />
 	    <property name="mediaTypes">
 	      	<map>
 	        	<entry key="json" value="application/json" />
-	        	<entry key="jsonp" value="application/javascript" />
             </map>
 	    </property>
 	    <property name="defaultViews">
 	      	<list>
 	      		<!--json-->
 	        	<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" ></bean>
-	        	<!--jsonp-->
-	        	<bean class="com.cl.jsonp.MappingJsonpView" ></bean>        	
 	      	</list>
 	    </property>
     	<property name="ignoreAcceptHeader" value="true" />

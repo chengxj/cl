@@ -2,7 +2,6 @@ package com.cl.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -17,7 +16,7 @@ public class Relic implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="OBJ_ID")
-	private long objId;
+	private Long objId;
 
 	private String author;
 
@@ -40,10 +39,10 @@ public class Relic implements Serializable {
 	private String era;
 
 	@Column(name="ERA_BEGIN")
-	private long eraBegin;
+	private Long eraBegin;
 
 	@Column(name="ERA_END")
-	private long eraEnd;
+	private Long eraEnd;
 
 	@Column(name="GENERATE_ERA")
 	private String generateEra;
@@ -63,7 +62,7 @@ public class Relic implements Serializable {
 
 	private String note;
 
-	private long notesnum;
+	private Long notesnum;
 
 	private String notesstr;
 
@@ -102,11 +101,11 @@ public class Relic implements Serializable {
 	public Relic() {
 	}
 
-	public long getObjId() {
+	public Long getObjId() {
 		return this.objId;
 	}
 
-	public void setObjId(long objId) {
+	public void setObjId(Long objId) {
 		this.objId = objId;
 	}
 
@@ -174,19 +173,19 @@ public class Relic implements Serializable {
 		this.era = era;
 	}
 
-	public long getEraBegin() {
+	public Long getEraBegin() {
 		return this.eraBegin;
 	}
 
-	public void setEraBegin(long eraBegin) {
+	public void setEraBegin(Long eraBegin) {
 		this.eraBegin = eraBegin;
 	}
 
-	public long getEraEnd() {
+	public Long getEraEnd() {
 		return this.eraEnd;
 	}
 
-	public void setEraEnd(long eraEnd) {
+	public void setEraEnd(Long eraEnd) {
 		this.eraEnd = eraEnd;
 	}
 
@@ -246,11 +245,11 @@ public class Relic implements Serializable {
 		this.note = note;
 	}
 
-	public long getNotesnum() {
+	public Long getNotesnum() {
 		return this.notesnum;
 	}
 
-	public void setNotesnum(long notesnum) {
+	public void setNotesnum(Long notesnum) {
 		this.notesnum = notesnum;
 	}
 
