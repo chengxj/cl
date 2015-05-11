@@ -2,21 +2,21 @@ package com.cl.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Date;
+
 
 /**
  * The persistent class for the RELIC database table.
  * 
  */
 @Entity
-@Table(name = "Relic")
 public class Relic implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="OBJ_ID")
-	private Long objId;
+	private long objId;
 
 	private String author;
 
@@ -39,10 +39,10 @@ public class Relic implements Serializable {
 	private String era;
 
 	@Column(name="ERA_BEGIN")
-	private Long eraBegin;
+	private BigDecimal eraBegin;
 
 	@Column(name="ERA_END")
-	private Long eraEnd;
+	private BigDecimal eraEnd;
 
 	@Column(name="GENERATE_ERA")
 	private String generateEra;
@@ -62,7 +62,7 @@ public class Relic implements Serializable {
 
 	private String note;
 
-	private Long notesnum;
+	private BigDecimal notesnum;
 
 	private String notesstr;
 
@@ -76,7 +76,7 @@ public class Relic implements Serializable {
 	private String objNo;
 
 	@Column(name="OBJ_NUMBER")
-	private long objNumber;
+	private BigDecimal objNumber;
 
 	@Column(name="OBJ_PRODAREA")
 	private String objProdarea;
@@ -101,11 +101,11 @@ public class Relic implements Serializable {
 	public Relic() {
 	}
 
-	public Long getObjId() {
+	public long getObjId() {
 		return this.objId;
 	}
 
-	public void setObjId(Long objId) {
+	public void setObjId(long objId) {
 		this.objId = objId;
 	}
 
@@ -173,19 +173,19 @@ public class Relic implements Serializable {
 		this.era = era;
 	}
 
-	public Long getEraBegin() {
+	public BigDecimal getEraBegin() {
 		return this.eraBegin;
 	}
 
-	public void setEraBegin(Long eraBegin) {
+	public void setEraBegin(BigDecimal eraBegin) {
 		this.eraBegin = eraBegin;
 	}
 
-	public Long getEraEnd() {
+	public BigDecimal getEraEnd() {
 		return this.eraEnd;
 	}
 
-	public void setEraEnd(Long eraEnd) {
+	public void setEraEnd(BigDecimal eraEnd) {
 		this.eraEnd = eraEnd;
 	}
 
@@ -245,11 +245,11 @@ public class Relic implements Serializable {
 		this.note = note;
 	}
 
-	public Long getNotesnum() {
+	public BigDecimal getNotesnum() {
 		return this.notesnum;
 	}
 
-	public void setNotesnum(Long notesnum) {
+	public void setNotesnum(BigDecimal notesnum) {
 		this.notesnum = notesnum;
 	}
 
@@ -285,11 +285,11 @@ public class Relic implements Serializable {
 		this.objNo = objNo;
 	}
 
-	public long getObjNumber() {
+	public BigDecimal getObjNumber() {
 		return this.objNumber;
 	}
 
-	public void setObjNumber(long objNumber) {
+	public void setObjNumber(BigDecimal objNumber) {
 		this.objNumber = objNumber;
 	}
 
